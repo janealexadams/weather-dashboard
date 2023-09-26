@@ -10,13 +10,103 @@
 </head>
 <body>
     <header>Weather Dashboard</header>
-    <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Search for a City:</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter city">
+    
+    <!-- search for a city form -->
+    <section class="container row firstSection">
+      <div class="container row">
+        <form class="col-4"> 
+          <div class="form-group">
+            <label for="exampleInputEmail1">Search for a City:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter city">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Search</button>
+          <ul class="list-group">
+            <li class="list-group-item"><button type="submit" class="listBtn btn btn-primary btn-block">Seattle</button></li>
+            <li class="list-group-item"><button type="submit" class="btn btn-primary btn-block">Portland</button></li>
+            <li class="list-group-item"><button type="submit" class="btn btn-primary btn-block">New York</button></li>
+            <li class="list-group-item"><button type="submit" class="btn btn-primary btn-block">San Francisco</button></li>
+            <li class="list-group-item"><button type="submit" class="btn btn-primary btn-block">Orlando</button></li>
+          </ul>
+        </form>
+        <div class="col-8 todayWeather">
+          <div class="card">
+            <div class="card-header">
+              Atlanta 9/13/2022
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Temp: </li>
+              <li class="list-group-item">Wind: </li>
+              <li class="list-group-item">Humidity: </li>
+            </ul>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-      </form>
+      </div>
+
+
+      <section class="container row secondContainer">
+          <div class="col card" style="width: 18rem;">
+            <div class="card-header">
+              9/14/2022
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Temp: </li>
+              <li class="list-group-item">Wind: </li>
+              <li class="list-group-item">Humidity: </li>
+            </ul>
+          </div>
+          <div class="col card" style="width: 18rem;">
+            <div class="card-header">
+              9/15/2022
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Temp: </li>
+              <li class="list-group-item">Wind: </li>
+              <li class="list-group-item">Humidity: </li>
+            </ul>
+          </div>
+          <div class="col card" style="width: 18rem;">
+            <div class="card-header">
+              9/16/2022
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Temp: </li>
+              <li class="list-group-item">Wind: </li>
+              <li class="list-group-item">Humidity: </li>
+            </ul>
+          </div>
+          <div class="col card" style="width: 18rem;">
+            <div class="card-header">
+              9/17/2022
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Temp: </li>
+              <li class="list-group-item">Wind: </li>
+              <li class="list-group-item">Humidity: </li>
+            </ul>
+          </div>
+          <div class="col card" style="width: 18rem;">
+            <div class="card-header">
+              9/18/2022
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Temp: </li>
+              <li class="list-group-item">Wind: </li>
+              <li class="list-group-item">Humidity: </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+    
+
+    
+   
+
+    
+
+
+
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
