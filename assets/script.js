@@ -81,12 +81,22 @@ var getWeather = function (latitude, longitude) {
 // Display weather results
 function displaytWeatherResults(data, cityName) {
 console.log(data)
+// adding the city name next to today's forecast
 var currentDate = data[0].dt_txt.split(" ")[0];
 var listTodaysWeather = $('#today');
-// trying to add the city name next to today's forecast
-listTodaysWeather.textContent = " " + cityName;
-
-
+listTodaysWeather.text(cityName)
+// adding the temperature to today's forecast
+var currentTemp = data[0].main.temp;
+var listTodaysTemp = $('#todaysTemp');
+listTodaysTemp.text(currentTemp)
+// adding the wind to today's forecast
+var currentWind = data[0].wind.speed;
+var listTodayswind = $('#todaysWind');
+listTodayswind.text(currentWind + ' MPH')
+// adding the humidity to today's forecast
+var currentHumid = data[0].main.humidity;
+var listTodaysHumid = $('#todaysHumid');
+listTodaysHumid.text(currentHumid + '%')
 
 
 
