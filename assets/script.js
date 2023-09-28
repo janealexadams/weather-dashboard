@@ -60,8 +60,8 @@ var getWeather = function (latitude, longitude) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
-          console.log(data.city.name);
+          // console.log(data);
+          // console.log(data.city.name);
           var cityName = data.city.name;
           var fiveDays = []
           for (var i = 0; i < data.list.length; i+=7) {
@@ -82,11 +82,19 @@ var getWeather = function (latitude, longitude) {
 function displaytWeatherResults(data, cityName) {
 console.log(data)
 var currentDate = data[0].dt_txt.split(" ")[0];
-var weatherUl = $('.weather');
-var dateLi = $('<li>');
-dateLi.text(cityName + " " + currentDate);
-weatherUl.append(dateLi);
+var listTodaysWeather = $('#today');
+// trying to add the city name next to today's forecast
+listTodaysWeather.textContent = " " + cityName;
 
+
+
+
+
+
+// var weatherUl = $('#currentWeather');
+// var dateLi = $('<h2>');
+// dateLi.text(cityName + " " + currentDate);
+// weatherUl.append(dateLi);
 }
  
 
