@@ -24,7 +24,7 @@ var submitForm = function (event) {
 
 //starts search will dislay the weather results containers 
 function startSearch() {
-  currentWeatherEl.removeClass('hidden');
+  weatherResultsEl.removeClass('hidden');
 };
 
 function getCoordinates (cityName) {
