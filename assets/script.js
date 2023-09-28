@@ -53,7 +53,7 @@ function getCoordinates (cityName) {
 
 
 var getWeather = function (latitude, longitude) {
-  var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=cda71af98eac24bf9a566b8327e94526' + '&units=imperial';
+  var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&lang=en&appid=cda71af98eac24bf9a566b8327e94526' + '&units=imperial';
 
   fetch(weatherUrl)
     .then(function (response) {
@@ -84,7 +84,7 @@ console.log(data)
 // adding the city name next to today's forecast
 var currentDate = data[0].dt_txt.split(" ")[0];
 var listTodaysWeather = $('#today');
-listTodaysWeather.text(cityName)
+listTodaysWeather.text(currentDate + " in " + cityName);
 // adding the temperature to today's forecast
 var currentTemp = data[0].main.temp;
 var listTodaysTemp = $('#todaysTemp');
