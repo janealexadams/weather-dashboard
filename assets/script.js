@@ -1,19 +1,13 @@
 // API Links:
 // https://openweathermap.org/api/geocoding-api
 // https://openweathermap.org/forecast5
-
 // my key = cda71af98eac24bf9a566b8327e94526
-// API for coordinates = 
-  // https://openweathermap.org/api/geocoding-api
-  // 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}'
-// API for weather = 
-  // https://openweathermap.org/forecast5
-  // 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=cda71af98eac24bf9a566b8327e94526'
- 
+
 
 var cityInputEl = $('#search');
 var today = $('#today');
 var searchForm = $('#searchForm')
+var weatherResultsEl = $('#weatherResults');
 
 var submitForm = function (event) {
   event.preventDefault();
@@ -22,11 +16,16 @@ var submitForm = function (event) {
   console.log(userInput);
   if (userInput) {
     getCoordinates(userInput);
+    startSearch()
   } else {
     alert('Please enter a city');
   }
 };
 
+//starts search will dislay the weather results containers 
+function startSearch() {
+  currentWeatherEl.removeClass('hidden');
+};
 
 function getCoordinates (cityName) {
   // console.log(cityName)
@@ -81,7 +80,6 @@ var getWeather = function (latitude, longitude) {
 // Display weather results
 function displaytWeatherResults(data, cityName) {
 console.log(data)
-
 // TODAY
 // adding the city name next to today's forecast
 var currentDate = data[0].dt_txt.split(" ")[0];
@@ -190,6 +188,13 @@ var fifthHumid = data[5].main.humidity;
 var listFifthHumid = $('#fifthHumid');
 listFifthHumid.text(fifthHumid + '%')
 }
- 
 
 searchForm.on('submit', submitForm);
+ 
+// intial load
+function initLoad() {
+  weatherResultsEl.addClass('hidden')
+}
+initLoad();
+
+
