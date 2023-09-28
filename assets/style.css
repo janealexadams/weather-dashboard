@@ -44,7 +44,7 @@ header {
     color: rgb(255, 255, 255);
 }
 
-#search {
+label {
     font-weight: 500;
     font-size: 26px;
     padding-top: 20px;
@@ -67,3 +67,4 @@ h1, h2{
 .weatherList {
     /* padding: 10px; */
 }
+

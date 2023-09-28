@@ -13,15 +13,15 @@
 
 var cityInputEl = $('#search');
 var today = $('#today');
-var startButton = $('startBtn')
+var searchForm = $('#searchForm')
 
 var submitForm = function (event) {
   event.preventDefault();
 
-  var userInput = cityInputEl.value.trim();
-
+  var userInput = cityInputEl.val().trim();
+  console.log(userInput);
   if (userInput) {
-    getCoordinates;
+    getCoordinates(userInput);
   } else {
     alert('Please enter a city');
   }
@@ -29,16 +29,18 @@ var submitForm = function (event) {
 
 
 function getCoordinates (cityName) {
+  // console.log(cityName)
   var coordinatesUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=cda71af98eac24bf9a566b8327e94526';
   
   fetch(coordinatesUrl)
   .then(function (response) {
       if (response.ok) {
           response.json().then(function (data) {
-              console.log(data[i].lat);
-              console.log(data[i].lon);
-              var lat = data[i].lat;
-              var lon = data[i].lon;
+              console.log(data[0].lat);
+              console.log(data[0].lon);
+              var latitude = data[0].lat;
+              var longitude = data[0].lon;
+              getWeather(latitude, longitude);
           });
       } else {
         alert('Error: ' + response.statusText);
@@ -47,20 +49,45 @@ function getCoordinates (cityName) {
   .catch(function (error) {
     alert('Unable to find weather data');
   });
+  
 }
 
 
-var getWeather = function (lat, lon) {
-  var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=cda71af98eac24bf9a566b8327e94526';
+var getWeather = function (latitude, longitude) {
+  var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=cda71af98eac24bf9a566b8327e94526';
 
   fetch(weatherUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          console.log(data.city.name);
+          var cityName = data.city.name;
+          var fiveDays = []
+          for (var i = 0; i < data.list.length; i+=7) {
+            fiveDays.push(data.list[i]);
+          }
+          // var date = data.list[i].dt_txt.split(" ")[0]
+          // var temperature = data[i].main.temp;
+          // var wind = data[i].wind;
+          // var humidity = data[i].main.humidity;
+          displaytWeatherResults(fiveDays, cityName)
         });
       } 
     })
 };
 
-startButton.addEventListener('click', getCoordinates);
+
+// Display weather results
+function displaytWeatherResults(data, cityName) {
+console.log(data)
+var currentDate = data[0].dt_txt.split(" ")[0];
+var weatherUl = $('.weather');
+var dateLi = $('<li>');
+dateLi.text(cityName + " " + currentDate);
+weatherUl.append(dateLi);
+
+}
+ 
+
+searchForm.on('submit', submitForm);
