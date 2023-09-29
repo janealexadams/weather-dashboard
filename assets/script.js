@@ -28,15 +28,12 @@ function startSearch() {
 };
 
 function getCoordinates (cityName) {
-  // console.log(cityName)
   var coordinatesUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=cda71af98eac24bf9a566b8327e94526';
   
   fetch(coordinatesUrl)
   .then(function (response) {
       if (response.ok) {
           response.json().then(function (data) {
-              // console.log(data[0].lat);
-              // console.log(data[0].lon);
               var latitude = data[0].lat;
               var longitude = data[0].lon;
               getWeather(latitude, longitude);
@@ -59,17 +56,11 @@ var getWeather = function (latitude, longitude) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          // console.log(data);
-          // console.log(data.city.name);
           var cityName = data.city.name;
           var fiveDays = []
           for (var i = 0; i < data.list.length; i+=7) {
             fiveDays.push(data.list[i]);
           }
-          // var date = data.list[i].dt_txt.split(" ")[0]
-          // var temperature = data[i].main.temp;
-          // var wind = data[i].wind;
-          // var humidity = data[i].main.humidity;
           displaytWeatherResults(fiveDays, cityName)
         });
       } 
@@ -85,22 +76,23 @@ console.log(data)
 // TODAY
 // adding the city name next to today's forecast
 var currentDate = data[0].dt_txt.split(" ")[0];
-console.log(currentDate)
-var a = new Date(currentDate);
-// ^ trying to convert this date format
-
-
-
+var dateComponents = currentDate.split("-");
+var year = dateComponents[0];
+var month = dateComponents[1];
+var day = dateComponents[2]
+var formattedDate = month + "/" + day + "/" + year;
 var listTodaysWeather = $('#today');
-listTodaysWeather.text(currentDate + " in " + cityName);
-// adding the emoji to today's forecast
-var weatherType = data[0].weather[0].main;
+listTodaysWeather.text(formattedDate + " in " + cityName);
+// // adding the emoji to today's forecast
+var weatherType = data[0].weather.main;
   if (weatherType === 'rain') {
-    console.log(rain)
+    console.log(☔);
+    var listTodaysEmoji = $('#today');
+    listTodaysEmoji.text(☔);
     } else if (weatherType === 'clear') {
-      console.log(clear)
+      console.log(☀️);
     } else if (weatherType === 'clouds') {
-      console.log(clouds)
+      console.log(☁️);
   };
 // adding the temperature to today's forecast
 var currentTemp = data[0].main.temp;
@@ -118,8 +110,13 @@ listTodaysHumid.text(currentHumid + '%')
 // DAY 1
 // adding the date 
 var firstDate = data[1].dt_txt.split(" ")[0];
+var dateComponents = firstDate.split("-");
+var year = dateComponents[0];
+var month = dateComponents[1];
+var day = dateComponents[2]
+var formattedDate = month + "/" + day + "/" + year;
 var listFirstDate = $('#firstDate');
-listFirstDate.text(firstDate)
+listFirstDate.text(formattedDate)
 // adding the temperature 
 var firstTemp = data[1].main.temp;
 var listfirstTemp = $('#firstTemp');
@@ -136,8 +133,13 @@ listfirstHumid.text(firstHumid + '%')
 // DAY 2
 // adding the date 
 var secondDate = data[2].dt_txt.split(" ")[0];
+var dateComponents = secondDate.split("-");
+var year = dateComponents[0];
+var month = dateComponents[1];
+var day = dateComponents[2]
+var formattedDate = month + "/" + day + "/" + year;
 var listSecondDate = $('#secondDate');
-listSecondDate.text(secondDate)
+listSecondDate.text(formattedDate)
 // adding the temperature 
 var secondTemp = data[2].main.temp;
 var listSecondTemp = $('#secondTemp');
@@ -154,8 +156,13 @@ listSecondHumid.text(secondHumid + '%')
 // DAY 3
 // adding the date
 var thirdDate = data[3].dt_txt.split(" ")[0];
+var dateComponents = thirdDate.split("-");
+var year = dateComponents[0];
+var month = dateComponents[1];
+var day = dateComponents[2]
+var formattedDate = month + "/" + day + "/" + year;
 var listThirdDate = $('#thirdDate');
-listThirdDate.text(thirdDate)
+listThirdDate.text(formattedDate)
 // adding the temperature 
 var thirdTemp = data[3].main.temp;
 var listThirdTemp = $('#thirdTemp');
@@ -172,8 +179,13 @@ listThirdHumid.text(thirdHumid + '%')
 // DAY 4
 // adding the date
 var fourthDate = data[4].dt_txt.split(" ")[0];
+var dateComponents = fourthDate.split("-");
+var year = dateComponents[0];
+var month = dateComponents[1];
+var day = dateComponents[2]
+var formattedDate = month + "/" + day + "/" + year;
 var listFourthDate = $('#fourthDate');
-listFourthDate.text(fourthDate)
+listFourthDate.text(formattedDate)
 // adding the temperature 
 var fourthTemp = data[4].main.temp;
 var listFourthTemp = $('#fourthTemp');
@@ -190,8 +202,13 @@ listFourthHumid.text(fourthHumid + '%')
 // DAY 5
 // adding the date
 var fifthDate = data[5].dt_txt.split(" ")[0];
+var dateComponents = fifthDate.split("-");
+var year = dateComponents[0];
+var month = dateComponents[1];
+var day = dateComponents[2]
+var formattedDate = month + "/" + day + "/" + year;
 var listFifthDate = $('#fifthDate');
-listFifthDate.text(fifthDate)
+listFifthDate.text(formattedDate)
 // adding the temperature 
 var fifthTemp = data[5].main.temp;
 var listFifthTemp = $('#fifthTemp');
@@ -213,7 +230,7 @@ listFifthHumid.text(fifthHumid + '%')
 searchForm.on('submit', submitForm);
 
 // display local storage when city is clicked on
-searchHistoryEl.on('click', displaytWeatherResults);
+// searchHistoryEl.on('click', displaytWeatherResults);
 
 var searchHistoryEl = $(".listGroup");
 
