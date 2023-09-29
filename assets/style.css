@@ -59,13 +59,16 @@ h1, h2{
     background-color: rgb(27, 63, 105);
     list-style-type: none;
     color: white;
-    /* padding: 10px; */
 }
 
-.weatherList {
-    /* padding: 10px; */
+.weatherWeek {
+    border: 1px;
+    margin: 5px;
 }
 
 .hidden {
     display: none;
   }
+
+  
+ 

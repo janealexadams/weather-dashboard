@@ -13,7 +13,7 @@ var submitForm = function (event) {
   event.preventDefault();
 
   var userInput = cityInputEl.val().trim();
-  console.log(userInput);
+  // console.log(userInput);
   if (userInput) {
     getCoordinates(userInput);
     startSearch()
@@ -35,8 +35,8 @@ function getCoordinates (cityName) {
   .then(function (response) {
       if (response.ok) {
           response.json().then(function (data) {
-              console.log(data[0].lat);
-              console.log(data[0].lon);
+              // console.log(data[0].lat);
+              // console.log(data[0].lon);
               var latitude = data[0].lat;
               var longitude = data[0].lon;
               getWeather(latitude, longitude);
@@ -77,14 +77,31 @@ var getWeather = function (latitude, longitude) {
 };
 
 
+
 // Display weather results
 function displaytWeatherResults(data, cityName) {
 console.log(data)
+
 // TODAY
 // adding the city name next to today's forecast
 var currentDate = data[0].dt_txt.split(" ")[0];
+console.log(currentDate)
+var a = new Date(currentDate);
+// ^ trying to convert this date format
+
+
+
 var listTodaysWeather = $('#today');
 listTodaysWeather.text(currentDate + " in " + cityName);
+// adding the emoji to today's forecast
+var weatherType = data[0].weather[0].main;
+  if (weatherType === 'rain') {
+    console.log(rain)
+    } else if (weatherType === 'clear') {
+      console.log(clear)
+    } else if (weatherType === 'clouds') {
+      console.log(clouds)
+  };
 // adding the temperature to today's forecast
 var currentTemp = data[0].main.temp;
 var listTodaysTemp = $('#todaysTemp');
@@ -187,13 +204,32 @@ listFifthWind.text(fifthWind + ' MPH')
 var fifthHumid = data[5].main.humidity;
 var listFifthHumid = $('#fifthHumid');
 listFifthHumid.text(fifthHumid + '%')
+
+ // weather result is added to local storage
+ localStorage.setItem("cityOne", cityName);
+
 }
 
 searchForm.on('submit', submitForm);
- 
+
+// display local storage when city is clicked on
+searchHistoryEl.on('click', displaytWeatherResults);
+
+var searchHistoryEl = $(".listGroup");
+
 // intial load
 function initLoad() {
-  weatherResultsEl.addClass('hidden')
+  weatherResultsEl.addClass('hidden');
+  // Retreive the saved weather data from local storage and display it when the page refreshes
+  if (localStorage.getItem("cityOne") === null) {
+      return
+  }
+  else {
+      var weatherHistory = searchHistoryEl.text(localStorage.getItem("cityOne"));
+      searchHistoryEl.append(weatherHistory);
+      searchHistoryEl.removeClass('hidden')
+      searchHistoryEl.addClass('listBtn btn btn-primary btn-block')
+}
 }
 initLoad();
 
