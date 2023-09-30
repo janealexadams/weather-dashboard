@@ -59,11 +59,13 @@ h1, h2{
     background-color: rgb(27, 63, 105);
     list-style-type: none;
     color: white;
+    padding: 5px;
 }
 
 .weatherWeek {
     border: 1px;
     margin: 5px;
+    padding: 5px;
 }
 
 .hidden {
@@ -71,4 +73,7 @@ h1, h2{
   }
 
   
- 
+ #searchForm {
+    margin-right: 20px;
+ }
+

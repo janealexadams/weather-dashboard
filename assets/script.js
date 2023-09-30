@@ -17,6 +17,8 @@ var submitForm = function (event) {
   if (userInput) {
     getCoordinates(userInput);
     startSearch()
+     // weather result is added to local storage
+    localStorage.setItem("cityOne", userInput);
   } else {
     alert('Please enter a city');
   }
@@ -84,16 +86,10 @@ var formattedDate = month + "/" + day + "/" + year;
 var listTodaysWeather = $('#today');
 listTodaysWeather.text(formattedDate + " in " + cityName);
 // // adding the emoji to today's forecast
-var weatherType = data[0].weather.main;
-  if (weatherType === 'rain') {
-    console.log(☔);
-    var listTodaysEmoji = $('#today');
-    listTodaysEmoji.text(☔);
-    } else if (weatherType === 'clear') {
-      console.log(☀️);
-    } else if (weatherType === 'clouds') {
-      console.log(☁️);
-  };
+var iconCode = data[0].weather[0].icon;
+var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+console.log(iconurl);
+$('#todayWicon').attr('src', iconurl);
 // adding the temperature to today's forecast
 var currentTemp = data[0].main.temp;
 var listTodaysTemp = $('#todaysTemp');
@@ -117,6 +113,10 @@ var day = dateComponents[2]
 var formattedDate = month + "/" + day + "/" + year;
 var listFirstDate = $('#firstDate');
 listFirstDate.text(formattedDate)
+// // adding the emoji to today's forecast
+var iconCode = data[1].weather[0].icon;
+var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+$('#firstWicon').attr('src', iconurl);
 // adding the temperature 
 var firstTemp = data[1].main.temp;
 var listfirstTemp = $('#firstTemp');
@@ -140,6 +140,10 @@ var day = dateComponents[2]
 var formattedDate = month + "/" + day + "/" + year;
 var listSecondDate = $('#secondDate');
 listSecondDate.text(formattedDate)
+// // adding the emoji to today's forecast
+var iconCode = data[2].weather[0].icon;
+var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+$('#secondWicon').attr('src', iconurl);
 // adding the temperature 
 var secondTemp = data[2].main.temp;
 var listSecondTemp = $('#secondTemp');
@@ -163,6 +167,10 @@ var day = dateComponents[2]
 var formattedDate = month + "/" + day + "/" + year;
 var listThirdDate = $('#thirdDate');
 listThirdDate.text(formattedDate)
+// // adding the emoji to today's forecast
+var iconCode = data[3].weather[0].icon;
+var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+$('#thirdWicon').attr('src', iconurl);
 // adding the temperature 
 var thirdTemp = data[3].main.temp;
 var listThirdTemp = $('#thirdTemp');
@@ -186,6 +194,10 @@ var day = dateComponents[2]
 var formattedDate = month + "/" + day + "/" + year;
 var listFourthDate = $('#fourthDate');
 listFourthDate.text(formattedDate)
+// // adding the emoji to today's forecast
+var iconCode = data[4].weather[0].icon;
+var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+$('#fourthWicon').attr('src', iconurl);
 // adding the temperature 
 var fourthTemp = data[4].main.temp;
 var listFourthTemp = $('#fourthTemp');
@@ -209,6 +221,10 @@ var day = dateComponents[2]
 var formattedDate = month + "/" + day + "/" + year;
 var listFifthDate = $('#fifthDate');
 listFifthDate.text(formattedDate)
+// // adding the emoji to today's forecast
+var iconCode = data[5].weather[0].icon;
+var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+$('#fifthWicon').attr('src', iconurl);
 // adding the temperature 
 var fifthTemp = data[5].main.temp;
 var listFifthTemp = $('#fifthTemp');
@@ -222,17 +238,21 @@ var fifthHumid = data[5].main.humidity;
 var listFifthHumid = $('#fifthHumid');
 listFifthHumid.text(fifthHumid + '%')
 
- // weather result is added to local storage
- localStorage.setItem("cityOne", cityName);
 
 }
 
 searchForm.on('submit', submitForm);
 
-// display local storage when city is clicked on
-// searchHistoryEl.on('click', displaytWeatherResults);
-
 var searchHistoryEl = $(".listGroup");
+
+// display local storage when city is clicked on
+searchHistoryEl.on('click', function(event) {
+  var city = $(this).text();
+  getCoordinates(city);
+  startSearch();
+});
+
+
 
 // intial load
 function initLoad() {
