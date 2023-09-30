@@ -24,7 +24,7 @@ function startSearch() {
 };
 
 function getCoordinates (cityName) {
-  var coordinatesUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=cda71af98eac24bf9a566b8327e94526';
+  var coordinatesUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=cda71af98eac24bf9a566b8327e94526';
   
   fetch(coordinatesUrl)
   .then(function (response) {
@@ -78,7 +78,7 @@ var listTodaysWeather = $('#today');
 listTodaysWeather.text(formattedDate + " in " + cityName);
 // // adding the emoji to today's forecast
 var iconCode = data[0].weather[0].icon;
-var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+var iconurl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 $('#todayWicon').attr('src', iconurl);
 // adding the temperature to today's forecast
 var currentTemp = data[0].main.temp;
@@ -104,7 +104,7 @@ var listFirstDate = $('#firstDate');
 listFirstDate.text(formattedDate)
 // // adding the emoji to today's forecast
 var iconCode = data[1].weather[0].icon;
-var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+var iconurl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 $('#firstWicon').attr('src', iconurl);
 // adding the temperature 
 var firstTemp = data[1].main.temp;
@@ -130,7 +130,7 @@ var listSecondDate = $('#secondDate');
 listSecondDate.text(formattedDate)
 // // adding the emoji to today's forecast
 var iconCode = data[2].weather[0].icon;
-var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+var iconurl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 $('#secondWicon').attr('src', iconurl);
 // adding the temperature 
 var secondTemp = data[2].main.temp;
@@ -156,7 +156,7 @@ var listThirdDate = $('#thirdDate');
 listThirdDate.text(formattedDate)
 // // adding the emoji to today's forecast
 var iconCode = data[3].weather[0].icon;
-var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+var iconurl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 $('#thirdWicon').attr('src', iconurl);
 // adding the temperature 
 var thirdTemp = data[3].main.temp;
@@ -182,7 +182,7 @@ var listFourthDate = $('#fourthDate');
 listFourthDate.text(formattedDate)
 // // adding the emoji to today's forecast
 var iconCode = data[4].weather[0].icon;
-var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+var iconurl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 $('#fourthWicon').attr('src', iconurl);
 // adding the temperature 
 var fourthTemp = data[4].main.temp;
@@ -208,7 +208,7 @@ var listFifthDate = $('#fifthDate');
 listFifthDate.text(formattedDate)
 // // adding the emoji to today's forecast
 var iconCode = data[5].weather[0].icon;
-var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+var iconurl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 $('#fifthWicon').attr('src', iconurl);
 // adding the temperature 
 var fifthTemp = data[5].main.temp;
