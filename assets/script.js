@@ -1,19 +1,13 @@
-// API Links:
-// https://openweathermap.org/api/geocoding-api
-// https://openweathermap.org/forecast5
-// my key = cda71af98eac24bf9a566b8327e94526
-
-
 var cityInputEl = $('#search');
 var today = $('#today');
 var searchForm = $('#searchForm')
 var weatherResultsEl = $('#weatherResults');
+var searchHistoryEl = $(".listGroup");
 
 var submitForm = function (event) {
   event.preventDefault();
 
   var userInput = cityInputEl.val().trim();
-  // console.log(userInput);
   if (userInput) {
     getCoordinates(userInput);
     startSearch()
@@ -70,11 +64,8 @@ var getWeather = function (latitude, longitude) {
 };
 
 
-
 // Display weather results
 function displaytWeatherResults(data, cityName) {
-console.log(data)
-
 // TODAY
 // adding the city name next to today's forecast
 var currentDate = data[0].dt_txt.split(" ")[0];
@@ -88,7 +79,6 @@ listTodaysWeather.text(formattedDate + " in " + cityName);
 // // adding the emoji to today's forecast
 var iconCode = data[0].weather[0].icon;
 var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-console.log(iconurl);
 $('#todayWicon').attr('src', iconurl);
 // adding the temperature to today's forecast
 var currentTemp = data[0].main.temp;
@@ -102,7 +92,6 @@ listTodayswind.text(currentWind + ' MPH')
 var currentHumid = data[0].main.humidity;
 var listTodaysHumid = $('#todaysHumid');
 listTodaysHumid.text(currentHumid + '%')
-
 // DAY 1
 // adding the date 
 var firstDate = data[1].dt_txt.split(" ")[0];
@@ -129,7 +118,6 @@ listFirstWind.text(firstWind + ' MPH')
 var firstHumid = data[1].main.humidity;
 var listfirstHumid = $('#firstHumid');
 listfirstHumid.text(firstHumid + '%')
-
 // DAY 2
 // adding the date 
 var secondDate = data[2].dt_txt.split(" ")[0];
@@ -156,7 +144,6 @@ listSecondWind.text(secondWind + ' MPH')
 var secondHumid = data[2].main.humidity;
 var listSecondHumid = $('#secondHumid');
 listSecondHumid.text(secondHumid + '%')
-
 // DAY 3
 // adding the date
 var thirdDate = data[3].dt_txt.split(" ")[0];
@@ -183,7 +170,6 @@ listThirdWind.text(thirdWind + ' MPH')
 var thirdHumid = data[3].main.humidity;
 var listThirdHumid = $('#thirdHumid');
 listThirdHumid.text(thirdHumid + '%')
-
 // DAY 4
 // adding the date
 var fourthDate = data[4].dt_txt.split(" ")[0];
@@ -210,7 +196,6 @@ listFourthWind.text(fourthWind + ' MPH')
 var fourthHumid = data[4].main.humidity;
 var listFourthHumid = $('#fourthHumid');
 listFourthHumid.text(fourthHumid + '%')
-
 // DAY 5
 // adding the date
 var fifthDate = data[5].dt_txt.split(" ")[0];
@@ -237,13 +222,9 @@ listFifthWind.text(fifthWind + ' MPH')
 var fifthHumid = data[5].main.humidity;
 var listFifthHumid = $('#fifthHumid');
 listFifthHumid.text(fifthHumid + '%')
-
-
 }
 
 searchForm.on('submit', submitForm);
-
-var searchHistoryEl = $(".listGroup");
 
 // display local storage when city is clicked on
 searchHistoryEl.on('click', function(event) {
@@ -251,8 +232,6 @@ searchHistoryEl.on('click', function(event) {
   getCoordinates(city);
   startSearch();
 });
-
-
 
 // intial load
 function initLoad() {
