@@ -20,4 +20,4 @@ The code meets the below Acceptance Criteria:
 Deployed website is here: https://janealexadams.github.io/weather-dashboard/
 
 Website screenshot below. 
-![Weather Dashboard](assets/images/weather%20dashboard%20screenshot.png)
+![Weather Dashboard](assets/images/weather-dashboard-screenshot.png)

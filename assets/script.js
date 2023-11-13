@@ -18,6 +18,18 @@ var submitForm = function (event) {
   }
 };
 
+var startBtnEl = $('#search-now');
+var startPageEl = $('#startPageEl');
+var dashboardEl = $('#dashboard');
+//starts search will hide start screen and get dashboard 
+function startWeather() {
+  startPageEl.addClass('hidden');
+  dashboardEl.removeClass('hidden');
+};
+// Event Listeners
+startBtnEl.on('click', startWeather)
+
+
 //starts search will dislay the weather results containers 
 function startSearch() {
   weatherResultsEl.removeClass('hidden');

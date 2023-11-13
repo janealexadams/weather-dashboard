@@ -1,20 +1,79 @@
 * { 
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     padding: 0;
-    margin: 0;
+    /* margin: 0; */
     font-weight: 500;
   }
 
-header {
-    font-size: 48px;
-    padding: 20px;
-    background-color: rgb(40, 87, 141);
-    text-align: center;
-    font-weight: 500;
-    color: white;
+#title {
+    font-size: 50px;
 }
 
+.start-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#startPageEl {
+    margin-top: 200px;
+}
+
+#logo {
+    margin-left: 5px;
+}
+
+#text {
+    text-align: center;
+    margin-right: 5px;
+}
+
+.recent-searches {
+    font-size: 20px;
+}
+
+.search-now {
+    width: 200px;
+    background-color: #4A7B9D;
+    border-color: #4A7B9D; 
+    margin-left: 110px;
+}
+
+.search-now:hover, .listBtn:hover, .startBtn:hover {
+    background-color: #E4B363;
+    border-color: #E4B363;
+    font-weight: bold;
+}
+
+body {
+    background-color: #E8E9EB
+}
+
+#top {
+    display: flex;
+}
+
+h1 {
+    padding: 30px;
+    background-color: #4A7B9D;
+    text-align: center;
+    font-weight: 500;
+    color: #E8E9EB
+}
+
+.header {
+    font-size: 55px;
+}
+
+.containter-fluid {
+    margin-left: 100px;
+}
+
+.search-for-a-city {
+    font-size: 35px
+}
 
 .list-group {
     text-align: center;
@@ -33,13 +92,15 @@ header {
 }
 
 .listBtn {
-    background-color: rgba(98, 96, 99, 0.677);
-    border-color: rgba(98, 96, 99, 0.677);
-    color:black;
+    background-color: #4A7B9D;
+    border-color: #4A7B9D;
 }
 
 .startBtn {
     color: rgb(255, 255, 255);
+    background-color: #4A7B9D;
+    border-color: #4A7B9D;
+    font-weight: bold;
 }
 
 label {
@@ -48,32 +109,40 @@ label {
     padding-top: 20px;
 }
 
-h1, h2{
+h2{
     font-weight: 500;
     font-size: 26px;
     padding-top: 20px;
-
 }
 
 .weather {
-    background-color: rgb(27, 63, 105);
+    background-color: #4A7B9D;
     list-style-type: none;
     color: white;
-    padding: 5px;
+    padding: 7px;
+    border-radius: 15px;
 }
 
 .weatherWeek {
     border: 1px;
-    margin: 5px;
-    padding: 5px;
+    margin: 12px;
+    padding: 7px;
 }
 
 .hidden {
     display: none;
   }
 
-  
+
  #searchForm {
     margin-right: 20px;
+    margin-left: 50px;
  }
 
+ .form-control {
+    height: 50;
+ }
+
+ #weatherResults {
+    margin-left: 100px;
+ }
