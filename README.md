@@ -1,23 +1,35 @@
 # Weather Dashboard
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Description
+This website is a weather dashboard used to search weather results by city. The applicatin retreives data from the [5 Day Weather Forecast](https://openweathermap.org/forecast5) API, and local storage is used to users to access their recent searches.  
 
-This website is a weather dashboard used to search weather results by city.
-
-The code meets the below Acceptance Criteria:
-* GIVEN a weather dashboard with form inputs
-* WHEN I search for a city THEN I am presented with current and future conditions for that city and that city is added to the search history
-* WHEN I view current weather conditions for that city THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-* WHEN I view future weather conditions for that city THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-* WHEN I click on a city in the search history THEN I am again presented with current and future conditions for that city
-
-## APIs
-*  [Geocoding API](https://openweathermap.org/api/geocoding-api)
-*  [5 Day Weather Forecast](https://openweathermap.org/forecast5)
+## Contents
+- [Usage](#usage)
+- [Built With](#built-with)
+- [Deployment](#deployment)
+- [Questions](#questions)
+- [Credits](#credits)
 
 ## Usage
+To use this application, clone the repository to your local machine:
+```
+git clone https://github.com/janealexadams/weather-dashboard.git
+```
 
-Deployed website is here: https://janealexadams.github.io/weather-dashboard/
+## Built With
+- [Geocoding API](https://openweathermap.org/api/geocoding-api)
+- [5 Day Weather Forecast](https://openweathermap.org/forecast5)
+- JavaScript
+- Local Storage
 
-Website screenshot below. 
-![Weather Dashboard](assets/images/weather-dashboard-screenshot.png)
+## Questions
+If you have any questions about the repo, please contact me via email at janealexadams@gmail.com. You can find more of my work on my GitHub, [janealexadams](https://github.com/janealexadams).
+
+## Credits
+Created by Jane Adams.
+
+## Deployment
+https://janealexadams.github.io/weather-dashboard/
+![Weather Dashboard](assets/images/weather-dashboard.gif)
